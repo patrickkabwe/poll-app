@@ -2,6 +2,22 @@
 
 Poll App is a web application that allows users to create and participate in polls. It's built with Go, leveraging the Chi router for handling HTTP requests, and styled with CSS for the frontend.
 
+![alt text](./project-file.png "Title")
+
+## Features
+
+- [x] User authentication
+- [x] User registration
+- [x] User login
+- [x] User logout
+- [ ] Create a poll
+- [ ] Vote on a poll
+- [ ] View poll results
+- [ ] View all polls
+- [ ] View a single poll
+- [ ] Delete a poll
+- [ ] Edit a poll
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
