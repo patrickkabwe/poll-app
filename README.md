@@ -22,7 +22,7 @@ Poll App is a web application that allows users to create and participate in pol
 
 Before you begin, ensure you have met the following requirements:
 
-- Go (version 1.15 or higher)
+- Go (version 1.21 or higher)
 - Docker and Docker Compose
 - Node.js and npm (for TailwindCSS and other frontend dependencies)
 
