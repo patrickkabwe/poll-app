@@ -1,0 +1,25 @@
+package components
+
+type InputProps struct {
+	Value       string
+	Name        string
+	Type        string
+	Label       string
+	Error       string
+	Placeholder string
+}
+
+templ Input(props InputProps) {
+	<div>
+		<input
+			type={ props.Type }
+			name={ props.Name }
+			value={ props.Value }
+			class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+			placeholder={ props.Placeholder }
+		/>
+		if props.Error != "" {
+			<small class="text-red-500 text-xs mt-1">{ props.Error }</small>
+		}
+	</div>
+}
