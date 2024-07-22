@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply rounded bg-blue-500 px-4 py-2 text-white;
+  }
+
+  .btn-outline {
+    @apply border-[2px] border-blue-500 bg-transparent text-blue-500 py-1.5;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white;
+  }
+}
+
+@layer utilities {
+  .success.toast {
+    @apply bg-green-50 text-green-600 border-green-300 z-40;
+  }
+
+  .error.toast {
+    @apply bg-red-50 text-red-600 border-red-300 z-40;
+  }
+}

@@ -1,0 +1,84 @@
+package pages
+
+import (
+	"poll-app/views/layouts"
+	"poll-app/views/components"
+	"poll-app/data"
+	"fmt"
+)
+
+templ Poll(poll data.Poll) {
+	@layouts.AppLayout() {
+		<div>
+			@components.Badge(poll.Category.Name, "bg-blue-500")
+			<h3 class="text-3xl my-5">
+				{ poll.Question }
+			</h3>
+			<div class="flex items-center justify-between">
+				<div class="flex items-center gap-4">
+					<small>
+						By <span class="text-gray-500">Patrick Kabwe</span>
+					</small>
+					<small class="text-gray-500">
+						&bull;	1 day ago
+					</small>
+				</div>
+				@components.Badge(GetTotalVotes(poll)+" votes", "bg-green-500")
+			</div>
+			// Options
+			<div class="mt-4 flex flex-col gap-2.5">
+				for _,option := range poll.Options {
+					<div class="flex items-center gap-4 w-full">
+						<div class="flex flex-col gap-4 bg-white border rounded px-4 py-2 flex-1">
+							<div class="flex items-center justify-between">
+								<div>
+									{ option.Title }
+								</div>
+
+								@components.Badge("5 votes 50%", "bg-blue-500 text-xs")
+							</div>
+								@Progressbar("50%")
+						</div>
+
+						<div class="flex flex-col justify-center items-center text-gray-300 gap-1">
+							<button class="flex flex-1" title="vote up">
+								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="bg-white rounded border">
+									<path fill="currentColor" d="M23.963 20.834L17.5 9.64c-.825-1.43-2.175-1.43-3 0L8.037 20.834c-.825 1.43-.15 2.598 1.5 2.598h12.926c1.65 0 2.325-1.17 1.5-2.598"/>
+								</svg>
+							</button>
+
+							<button class="flex flex-1" title="vote down">
+								<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="bg-white rounded border">
+									<path fill="currentColor" d="M8.037 11.166L14.5 22.36c.825 1.43 2.175 1.43 3 0l6.463-11.195c.826-1.43.15-2.598-1.5-2.598H9.537c-1.65 0-2.326 1.17-1.5 2.6z"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+	}
+}
+
+templ Progressbar(percentage string) {
+	<div class="w-full h-2 overflow-hidden bg-gray-200 rounded-full">
+		<div class="h-full bg-blue-500" style="width:10%"></div>
+	</div>
+}
+
+func GetTotalVotes(poll data.Poll) string {
+	totalVotes := 0
+	for _, option := range poll.Options {
+		totalVotes += option.TotalVotes
+	}
+	return string(totalVotes)
+}
+
+func GetOptionPercentage(option data.Option, totalVotes string) string {
+	if totalVotes == "0" {
+		return "0"
+	}
+	fmt.Println("Votes", totalVotes)
+	percentage := (option.TotalVotes / 100) * 100
+	return string(percentage)
+}

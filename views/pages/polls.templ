@@ -1,0 +1,50 @@
+package pages
+
+import (
+	"poll-app/views/layouts"
+	"poll-app/views/components"
+	"poll-app/data"
+)
+
+templ Polls(items []data.Poll) {
+	@layouts.AppLayout() {
+		<div class="mb-4 flex items-center justify-between border-b pb-2">
+			<h3 class="text-xl font-bold">
+				Polls
+			</h3>
+			<div>
+				<select name="" placeholder="Category" class="border p-1 rounded">
+					<option value="all">All</option>
+					<option value="sports">Sports</option>
+					<option value="politics">Politics</option>
+					<option value="entertainment">Entertainment</option>
+				</select>
+			</div>
+		</div>
+		<div class="w-full">
+			for _,item := range items {
+				<a href="/1" class="mb-4 block cursor-pointer rounded border p-4 hover:shadow-sm bg-white">
+					<div class="flex items-center justify-between">
+						@components.Badge("Web Development", "bg-blue-500")
+						<small class="font-bold">
+							300 votes
+						</small>
+					</div>
+					<div class="my-4 text-xl font-semibold w-[500px]">
+						<h4>
+							{ item.Question }
+						</h4>
+					</div>
+					<div class="flex items-center justify-between">
+						<small>
+							By <span class="text-gray-500">Patrick Kabwe</span>
+						</small>
+						<small class="text-gray-500">
+							1 day ago
+						</small>
+					</div>
+				</a>
+			}
+		</div>
+	}
+}

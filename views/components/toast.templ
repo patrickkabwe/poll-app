@@ -1,0 +1,19 @@
+package components
+
+templ Toast() {
+	<div class="flex items-center overflow-hidden justify-between border w-[400px]  mx-auto absolute translate-y-16 transition-all bg-white rounded shadow opacity-0 left-0 right-0" id="toast">
+		<div class="p-3 flex items-center gap-1">
+			<div id="toastIcon"></div>
+			<p id="toastMessage" class="text-gray-600 text-[14px]">
+				Hello, this is a message
+			</p>
+		</div>
+		<div>
+			<button class="m-2 hover:bg-gray-100 rounded-full h-7 w-7 flex items-center justify-center" id="closeToastBtn">
+				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" class="h-5 w-5 text-gray-600">
+					<path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m18 18l-6-6m0 0L6 6m6 6l6-6m-6 6l-6 6"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+}
