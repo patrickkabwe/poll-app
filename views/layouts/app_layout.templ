@@ -1,0 +1,11 @@
+package layouts
+
+templ AppLayout() {
+	@BaseLayout() {
+		<div class="flex h-[calc(100vh-50px)] bg-gray-50">
+			<div class="mx-auto max-w-7xl py-6 w-[700px]">
+				{ children... }
+			</div>
+		</div>
+	}
+}

@@ -1,0 +1,29 @@
+package layouts
+
+import (
+	"poll-app/views/components"
+)
+
+templ BaseLayout() {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<title>Poll</title>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			// Styles
+			<link rel="stylesheet" href="/static/styles.css"/>
+			// Favicon
+			<link rel="icon" type="image/svg" href="/static/favicon.svg"/>
+			// HTMX
+			<script src="https://unpkg.com/htmx.org@2.0.1" defer></script>
+			<script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+		</head>
+		<body hx-boost="true">
+			@components.Toast()
+			@components.NavBar()
+			{ children... }
+			<script src="/static/main.js" type="module"></script>
+		</body>
+	</html>
+}
